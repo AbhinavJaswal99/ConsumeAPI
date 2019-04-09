@@ -1,0 +1,36 @@
+
+
+<div *ngIf = "customer">
+ 
+  <div><span>CustomerId : </span>{{customer.CustomerId}}</div>
+  <div>
+    <label>CustomerName
+      <input [(ngModel)]="customer.CustomerName" placeholder="Name">
+    </label>
+  </div>
+  <div>
+      <label>Email
+        <input [(ngModel)]="customer.Email" placeholder="Email">
+      </label>
+    </div>
+   <div>
+     <label>Phone
+        <input [(ngModel)]="customer.Phone" placeholder="Phone">
+
+     </label>
+   </div>
+   <div>
+      <label>Address 
+         <input [(ngModel)]="customer.Address" placeholder="Address">
+ 
+      </label>
+    </div>
+    <div>
+      <label>AlternateNumber
+         <input [(ngModel)]="customer.AlternateNumber" placeholder="AlternateNumber">
+ 
+      </label>
+    </div>
+    <button (click)="GoBack()">Go back</button> 
+    <button (click)= "updateCustomer(customer.CustomerId)">Save </button>
+</div>

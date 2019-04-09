@@ -1,0 +1,28 @@
+  <b>Add Customer</b>
+  <div>
+    <div>
+      
+     <label>CustomerName
+         <input type="textBox"  [(ngModel)]="customer.CustomerName" placeholder="CustomerName">  
+     </label>
+     <br>
+     <label>Email</label>
+     <br>
+     <input type="textBox" [(ngModel)]="customer.Email" placeholder="Email">  
+     <br>
+     <label>Phone</label>
+     <br>
+     <input type="textBox" [(ngModel)]="customer.Phone" placeholder="Phone">
+     <br>
+     <label>Address </label>
+     <br>
+     <input type="textBox" [(ngModel)]="customer.Address" placeholder="Address">
+     <br>
+     <label>AlternateNumber </label>
+     <br>
+     <input type="text" [(ngModel)]="customer.AlternateNumber" placeholder="AlternateNumber">
+    </div> 
+    <button (click)="GoBack()" >Go back</button> 
+    <button  (click) = "saveCustomer()" >Save Data</button>
+  </div>
+
