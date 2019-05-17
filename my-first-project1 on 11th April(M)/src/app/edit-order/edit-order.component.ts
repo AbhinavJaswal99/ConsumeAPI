@@ -50,10 +50,7 @@ export class EditOrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  
-    
     // this.getItems();
-    
      this.getOrderdb();
   }
 
