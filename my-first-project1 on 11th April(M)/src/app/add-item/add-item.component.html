@@ -1,0 +1,25 @@
+<p>
+  Add Items ---- Provide Item To Customer
+</p>
+<div>
+  <div>
+    <label>ItemName
+        <input type="textBox" [(ngModel)] = "item.ItemName" placeholder="ItemName">
+    </label>
+    <br>
+    <label>Item Quantity
+      <input type="textBox" [(ngModel)] = "item.ItemQuantity" placeholder="Quantity">
+  </label>
+  <br>
+  <label>Item Price
+    <input type="textBox" [(ngModel)] = "item.ItemPrice" placeholder="Price">
+</label>
+<br>
+<label> Item Description
+  <input type="textBox" [(ngModel)] = "item.ItemDescription" placeholder="Description">
+</label>
+<br>
+<button (click) = "Goback()" >Go Back</button> 
+<button  (click) = "SaveItem()">Save</button>
+  </div>
+</div>

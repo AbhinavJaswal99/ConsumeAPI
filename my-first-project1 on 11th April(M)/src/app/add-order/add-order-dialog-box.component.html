@@ -1,0 +1,59 @@
+<h3>Select Items</h3>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+           
+            </th>
+            <td mat-cell *matCellDef="let selectedrow">
+              <mat-checkbox  (click)="onCheckChange(selectedrow)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let items"> {{items.Id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ItemName">
+        <th mat-header-cell *matHeaderCellDef> ItemName </th>
+        <td mat-cell *matCellDef="let items"> {{items.ItemName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ItemQuantity">
+        <th mat-header-cell *matHeaderCellDef> ItemQuantity </th>
+        <td mat-cell *matCellDef="let items"> {{items.ItemQuantity}} </td>
+
+        <button class="btn btn-default" data-dir="dwn">
+          <span class="glyphicon glyphicon-minus">-</span>
+        </button>
+      </ng-container>
+
+
+      <ng-container matColumnDef="ItemPrice">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let items"> {{items.ItemPrice}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ItemDescription">
+        <th mat-header-cell *matHeaderCellDef> ItemDescription </th>
+        <td mat-cell *matCellDef="let items"> {{items.ItemDescription}} </td>
+      </ng-container>
+
+
+
+      <tr mat-header-row *matHeaderRowDef=" ItemDisplayedColumns"></tr>
+    
+
+          <!-- <tr mat-row *matRowDef="let items; columns: ItemDisplayedColumns;"
+      (click)=" highlight(items)"></tr> -->
+
+       <tr mat-row *matRowDef="let row; columns: ItemDisplayedColumns;"
+        > 
+    </table>
+    <div class="wrapper">
+    <button mat-raised-button color="warn" cdkFocusInitial  [mat-dialog-close]="data.selectedItem" cdkFocusInitial>Select</button> 
+</div>

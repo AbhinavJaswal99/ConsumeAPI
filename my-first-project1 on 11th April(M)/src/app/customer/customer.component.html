@@ -1,0 +1,87 @@
+<!-- <p align="center"><h2><b><i>My Customers</i></b> </h2></p> -->
+
+<h1><p align="center">CUSTOMER INFORMATION</p></h1>
+
+<nav mat-tab-nav-bar>
+   
+    <a mat-tab-link routerLink="/customer"  >Customer Information      
+    </a>
+  
+   
+    <a mat-tab-link routerLink="/order-information">Order Information      
+    </a>
+    <a mat-tab-link routerLink="/item">Item Information
+    </a>
+</nav>
+
+<br>
+<br>
+<div class="wrapper">
+<button mat-raised-button color="primary" (click) = "AddCustomer()">Add Customer</button>
+</div>
+<br>
+<br>
+<div class="mat-elevatddion-z8">
+ 
+<table mat-table [dataSource]="datasource" class="mat-elevation-z8" matSort>
+    
+
+  
+  
+    <ng-container matColumnDef="CustomerId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let Customers"> {{Customers.CustomerId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef >  Name </th>
+        <td mat-cell *matCellDef="let Customers"> {{Customers.CustomerName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef > Email </th>
+          <td mat-cell *matCellDef="let Customers"> {{Customers.Email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let Customers"> {{Customers.Phone}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Address">
+              <th mat-header-cell *matHeaderCellDef> Address </th>
+              <td mat-cell *matCellDef="let Customers"> {{Customers.Address}} </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="AlternateNumber">
+                <th mat-header-cell *matHeaderCellDef> AlternateNumber </th>
+                <td mat-cell *matCellDef="let Customers"> {{Customers.AlternateNumber}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="ImageUrl">
+                <th mat-header-cell *matHeaderCellDef> Image Url </th>
+                <td mat-cell *matCellDef="let customer"> <img [src]="customer.ImagePath" /> </td>
+              </ng-container>
+
+
+              <ng-container  matColumnDef="Actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let Customers">
+                  <button mat-icon-button color="accent" (click)="Navigation(Customers.CustomerId)" >
+                    <mat-icon aria-label="Edit">Edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteCustomer(Customers.CustomerId)">
+                  <mat-icon color="accent" aria-label="Delete">Delete</mat-icon>
+              </button>
+                </td>
+            </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  
+  </table>
+
+  <mat-paginator [pageSizeOptions]= "[10,20,30,40,50,60,70]" showFirstLastButtons></mat-paginator>
+
+
+  </div>

@@ -1,0 +1,68 @@
+<h1><p align="center">ITEMS INFORMATION</p></h1>
+
+<nav mat-tab-nav-bar>
+   
+    <a mat-tab-link routerLink="/customer"  >Customer Information      
+    </a>
+  
+   
+    <a mat-tab-link routerLink="/order-information">Order Information      
+    </a>
+    <a mat-tab-link routerLink="/item">Item Information
+    </a>
+</nav>
+
+<h1><b><i>Items ---- Collections of Items</i></b> </h1>
+
+
+<nav>
+  <a routerLink = "/add-item">Add Item</a>
+</nav>
+
+
+<table mat-table  [dataSource]="datasource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td mat-cell *matCellDef="let item"> {{item.Id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ItemName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ItemName </th>
+            <td mat-cell *matCellDef="let item"> {{item.ItemName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ItemQuantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ItemQuantity </th>
+            <td mat-cell *matCellDef="let item"> {{item.ItemQuantity}} </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="ItemPrice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+            <td mat-cell *matCellDef="let item"> {{item.ItemPrice}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ItemDescription">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ItemDescription </th>
+            <td mat-cell *matCellDef="let item"> {{item.ItemDescription}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Actions">
+             <th mat-header-cell *matHeaderCellDef>Actions</th>
+             <td mat-cell *matCellDef="let item">
+               <button mat-icon-button color="accent" (click)="Navigation(item.Id)">
+                 <mat-icon aria-label="Edit">Edit</mat-icon>
+               </button>
+               <button mat-icon-button (click) = "deleteItem(item.Id)" >
+                 <mat-icon aria-label="Delete" color="accent" >Delete</mat-icon>
+               </button>
+             </td>
+          </ng-container>
+
+         
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+
+
+</table>

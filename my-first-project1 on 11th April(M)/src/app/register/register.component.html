@@ -1,0 +1,54 @@
+
+<div id="mydiv">
+<h2>  Register </h2>
+
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Username &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <input type="textBox" [(ngModel)]="register.Email" formControlName = "Email" class="form-control" [ngClass] = "{'is-invalid': submitted && f.Email.errors}" placeholder="Email">
+         <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+            <div *ngIf="f.Email.errors.required">Email is required.</div>
+            <div *ngIf="f.Email.errors.email">Email must be a valid email address.</div>
+         </div>
+      </label>
+    </div>
+  <br>
+  <div class="form-group">
+  <label>Password  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+    <input type="textBox" class="form-control" formControlName = "password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="register.Password" type="password" placeholder="Password">
+    <div *ngIf = "submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf = "f.password.errors.required">Password is required.</div>
+      <div *ngIf = "f.password.errors.minlength">Password must be atleast 6 characters.</div>
+    </div>
+  </label>
+</div>
+  <br>
+  <div class="form-group">
+    <label>Confirm Password &nbsp;
+      <input type="textBox" class="form-control" [(ngModel)]="register.ConfirmPassword" formControlName="confirmPassword"
+        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" type="password"
+        placeholder="ConfirmPassword">
+      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required.</div>
+        <div *ngIf="f.confirmPassword.errors.MustMatch">Password must match.</div>
+      </div>
+    </label>
+  </div>
+  
+  <br>
+  <br>
+  <div class="wrapper">
+    <div class="form-group">
+      <button class="btn btn-primary">Register</button>
+    </div>
+  </div>
+  
+  <!--<button (click) = "RegisterModel()" >Register</button> -->
+</form>
+<div class="wrapper">
+  <button  class="btn btn-primary"  (click) = "NavToLogin()">Back to LOGIN</button>&nbsp;
+</div>
+
+</div>
+</div>

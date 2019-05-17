@@ -1,0 +1,61 @@
+<h1><p align="center">Order Information</p></h1>
+<nav mat-tab-nav-bar>
+    
+    <a mat-tab-link routerLink="/customer"  >Customer Information      
+    </a>
+    <a mat-tab-link routerLink="/order-information">Order Information      
+    </a>
+    <a mat-tab-link routerLink="/item">Item Information
+    </a>
+</nav>
+
+
+<br>
+<br>
+<div class="wrapper">
+<button mat-raised-button color="primary" (click) = "AddOrder()">Add Order</button>
+</div>
+<br>
+<br>
+
+<table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="OrderId">
+                <th mat-header-cell *matHeaderCellDef > OrderId</th>
+                <td mat-cell *matCellDef="let orderinformation"> {{orderinformation.orderId}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="CustomerName">
+                <th mat-header-cell *matHeaderCellDef >CustomerName</th>
+                <td mat-cell *matCellDef="let orderinformation"> {{orderinformation.customername}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="TotalPrice">
+                    <th mat-header-cell *matHeaderCellDef > TotalPrice</th>
+                    <td mat-cell *matCellDef="let orderinformation"> {{orderinformation.totalPrice}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="OrderDate">
+                    <th mat-header-cell *matHeaderCellDef > OrderDate</th>
+                    <td mat-cell *matCellDef="let orderinformation"> {{orderinformation.orderdate |  date}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="TotalQuantity">
+                        <th mat-header-cell *matHeaderCellDef > TotalQuantity</th>
+                        <td mat-cell *matCellDef="let orderinformation"> {{orderinformation.totalquantity}} </td>
+                      </ng-container>          
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                          <ng-container  matColumnDef="Actions">
+                            <th mat-header-cell *matHeaderCellDef>Actions</th>
+                            <td mat-cell *matCellDef="let orderinformation">
+                              <button mat-icon-button color="accent" (click)="Navigation(orderinformation.orderId)" >
+                                <mat-icon aria-label="Edit">Edit</mat-icon>
+                            </button>
+                         
+                        </ng-container>
+
+</table>
+
+

@@ -1,0 +1,30 @@
+<div *ngIf="items">
+
+  <div><span>ItemId : </span>{{items.Id}}</div>
+  <div>
+    <label>Name
+      <input [(ngModel)]="items.ItemName" placeholder="Name">
+      <br>
+    </label>
+  </div>
+  <div>
+    <label>Quantity
+      <input [(ngModel)] = "items.ItemQuantity" placeholder="Quantity">
+    </label>
+  </div>
+   <div>
+     <label>Price
+       <input [(ngModel)] = "items.ItemPrice" placeholder="Price">
+     </label>
+   </div>
+   <div>
+     <label>Description
+       <input [(ngModel)] = "items.ItemDescription" placeholder="Description">
+     </label>
+   </div>
+   <div>
+     <button (click) = "GoBack()">Go Back</button>
+     <button (click) = "UpdatedData(items.Id)">Update Data</button>
+
+   </div>
+</div>

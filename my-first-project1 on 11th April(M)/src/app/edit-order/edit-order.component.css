@@ -1,0 +1,32 @@
+.wrapper {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+  }
+
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .mat-column-select {
+    overflow: initial;
+  } 
+
+
+  
+img {
+  width: 30px;
+  height: 30px;
+}
+
+.wrapper {
+  text-align: center;
+}

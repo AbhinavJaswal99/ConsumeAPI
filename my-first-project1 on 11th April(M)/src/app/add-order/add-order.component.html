@@ -1,0 +1,132 @@
+
+<h1>
+  <p align="center">Add Order</p>
+</h1>
+
+
+<div>
+  <form name="form" (ngSubmit)="f.form.valid && onSubmitOrder()" #f="ngForm" novalidate>
+
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Select Customer</mat-label>
+        <mat-select required [(ngModel)]="selectedCustomerValue" name="selectCustomer" #selectCustomer="ngModel"
+          [ngModelOptions]="{ updateOn: 'blur' }">
+          <mat-option *ngFor="let customer of customers" [value]="customer.CustomerId">
+            {{customer.CustomerName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <div *ngIf="selectCustomer.invalid" class="alert alert-danger">
+        <div *ngIf="selectCustomer.errors.required">
+          Customer must be selected.
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="wrapper">
+      <button mat-raised-button color="accent" (click)="openDialog()">Add Item</button>
+    </div>
+
+    <div>
+
+      <table mat-table [dataSource]="selectedDataSource" class="mat-elevation-z8">
+
+
+
+
+        <ng-container matColumnDef="ItemName">
+          <th mat-header-cell *matHeaderCellDef> ItemName </th>
+          <td mat-cell *matCellDef="let selectedItem"> {{selectedItem.ItemName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ItemQuantity">
+          <th mat-header-cell *matHeaderCellDef> ItemQuantity </th>
+          <mat-cell *matCellDef="let selectedItem">
+            <button class="btn btn-default" (click)="increase_quantity(selectedItem)"> <span
+                class="glyphicon glyphicon-plus"></span></button>
+
+            <input type="text" name="ItemQuantity" (blur)="onBlurMethod(selectedItem)"
+              [(ngModel)]="selectedItem.ItemQuantity">
+          
+
+            <button class="btn btn-default" (click)="decrease_quantity(selectedItem)"> <span
+                class="glyphicon glyphicon-minus"></span></button>
+
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ItemPrice">
+          <th mat-header-cell *matHeaderCellDef> ItemPrice </th>
+          <td mat-cell *matCellDef="let selectedItem"> {{selectedItem.ItemPrice}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="ItemTotal">
+          <th mat-header-cell *matHeaderCellDef> ItemTotal </th>
+          <td mat-cell *matCellDef="let selectedItem"> {{selectedItem.ItemQuantity * selectedItem.ItemPrice }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let selectedItem">
+            <button mat-icon-button>
+              <mat-icon aria-label="Remove" color="accent" (click)="Removeitem(selectedItem)">Remove</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="OrderItemDisplayedColumns "></tr>
+        <tr mat-row *matRowDef="let selectedItem; columns: OrderItemDisplayedColumns ;"></tr>
+
+
+      </table>
+    </div>
+    <br>
+    <br>
+
+    <mat-form-field class="Total">
+      <input matInput placeholder="Total Quantity" [value]="totalQuantity">
+    </mat-form-field>
+
+    <mat-form-field class="Total">
+      <input matInput placeholder="Total Price" [value]="totalPrice">
+    </mat-form-field>
+
+
+    <div class="form-group">
+      <mat-form-field class="Total">
+          <input matInput [matDatepicker]="picker" placeholder="Order Date"   [value]="today | date:'dd-MM-yyyy'">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <!-- <mat-form-field class="Total">
+        <input matInput [matDatepicker] = "picker" placeholder = "Choose a date"  [value]="today | date:'dd-MM-yyyy'">
+        <mat-datepicker-toggle matSuffix [for] = "picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+        
+        <!-- <input matInput [matDatepicker]="picker" required placeholder="Choose a date" #picker="ngModel"
+          [ngModelOptions]="{ updateOn: 'blur' , standalone : 'true'}" [(ngModel)]=" dateModel.start_time | date:'dd-MM-yyyy'">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <div *ngIf="picker.invalid" class="alert alert-danger">
+        <div *ngIf="picker.errors.required">
+          Date must be selected.
+        </div> -->
+      <!-- </div> -->
+    </div>
+    <div class="form-group">
+      <div class="wrapper"> <button align="center" mat-raised-button color="primary" [disabled]=" f.form.invalid">Add
+          Order</button></div>
+    </div>
+    <br>
+  </form>
+</div>

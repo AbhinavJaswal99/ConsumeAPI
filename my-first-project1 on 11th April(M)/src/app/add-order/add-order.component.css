@@ -1,0 +1,108 @@
+/* 
+
+ .mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+
+ .mat-row {
+  min-height: 65px;
+ }
+/* 
+ table {
+  width: 100%;
+} */
+
+
+/* .mat-form-field {
+  font-size: 14px;
+  width: 20%;
+}
+
+.mat-column-select {
+  overflow: initial;
+} 
+
+ */
+/* 
+ table {
+  width: 100%;
+}
+
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-column-select {
+  overflow: initial;
+}  */
+
+.modal-body{
+  height: 500px;
+  overflow-y: auto;
+}
+ 
+ .mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+
+ .mat-row {
+  min-height: 65px;
+ }
+
+ table {
+  width: 100%;
+}
+
+
+.mat-form-field {
+  font-size: 14px;
+  width: 20%;
+}
+
+.mat-column-select {
+  overflow: initial;
+} 
+
+ */
+
+ table {
+  width: 100%;
+}
+
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-column-select {
+  overflow: initial;
+}  
+
+
+.wrapper {
+  text-align: center;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+}
+
+.wrapper {
+  text-align: center;
+}

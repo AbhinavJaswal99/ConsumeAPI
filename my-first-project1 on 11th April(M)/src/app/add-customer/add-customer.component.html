@@ -1,0 +1,119 @@
+<h1>
+  <p align="center">Add Customer</p>
+</h1>
+<!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="/home">Home
+  </a>
+  <a mat-tab-link routerLink="/customer">Customer Information
+  </a>
+  <a mat-tab-link routerLink="/add-customer">Add Customer
+  </a>
+  <a mat-tab-link routerLink="/add-order">Add Order
+  </a>
+  <a mat-tab-link routerLink="/order-information">Order Information
+  </a>
+</nav> -->
+
+<div class="container">
+
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label>CustomerName
+        <input type="textBox" [(ngModel)]="customer.CustomerName" name="customername" required minlength="6"
+          #customername="ngModel" placeholder="CustomerName">
+      </label>
+    </div>
+    <div class="form-group">
+      <div *ngIf="customername.invalid" class="alert alert-danger">
+        <div *ngIf="customername.errors.required">
+          Name is required.
+        </div>
+        <div *ngIf="customername.errors?.minlength">
+          Name must be at least 6 characters long.
+        </div>
+
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label>Email
+        <br>
+        <input type="textBox" [(ngModel)]="customer.Email" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required minlength="6" name="Email" #Email="ngModel"
+          placeholder="Email">
+      </label>
+    </div>
+    <div class="form-group">
+      <div *ngIf="Email.invalid" class="alert alert-danger">
+        <div *ngIf="Email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="Email.errors?.pattern && Email.touched">
+          Email is invalid.
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>Phone
+        <br>
+        <input type="textBox" [(ngModel)]="customer.Phone" required minlength="3" maxlength="8" name="Phone" #Phone="ngModel"
+          placeholder="Phone">
+      </label>
+    </div>
+    <div class="form-group">
+      <div *ngIf="Phone.invalid" class="alert alert-danger">
+        <div *ngIf="Phone.errors.required">
+          Phone Number is required
+        </div>
+        <div *ngIf="Phone.errors?.minlength">
+            Enter valid Phone number
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>Address
+        <br>
+        <input type="textBox" [(ngModel)]="customer.Address" required minlength="2" name="Address" #Address="ngModel"
+          placeholder="Address">
+      </label>
+    </div>
+    <div class="form-group">
+      <div *ngIf="Address.invalid" class="alert alert-danger">
+        <div *ngIf="Address.errors.required">
+          Address is required
+        </div>
+        <div *ngIf="Address.errors?.minlength">
+          Address must be at least 7 characters long.
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>AlternateNumber
+
+      </label>
+      <br>
+      <input type="text" [(ngModel)]="customer.AlternateNumber" #Alternatenumber="ngModel" name="AlternateNumber"
+        placeholder="AlternateNumber">
+      <br>
+    </div>
+
+    <div class="form-group">
+      <label>Upload Image </label>
+    </div>
+    <br>
+    <input #file type="file" accept="image/*" (change)="previewImage(file.files)" />
+    <img [src]= "imageURL" height="200" width="200" *ngIf="imageURL">
+
+    <div class="form-group">
+   
+      <button class="btn btn-warn" [disabled]=" f.form.invalid">Save Data</button>
+    </div>
+  </form>
+  <button class="btn btn-warn" (click)="GoBack()">Go back</button>
+</div>
+
