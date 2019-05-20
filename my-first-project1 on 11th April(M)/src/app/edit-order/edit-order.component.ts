@@ -63,7 +63,6 @@ export class EditOrderComponent implements OnInit {
        this.totalPrice = this.orderdb.TotalPrice;
        this.SelectedItemDataSource = new MatTableDataSource(this.selectedOrderItem);
        this.SelectedItemDataSource._updateChangeSubscription();
-
       });    
   }
 
@@ -121,7 +120,7 @@ export class EditOrderComponent implements OnInit {
 CountPrice(){
   this.totalPrice = 0;
     this.totalQuantity = 0;
-  for(let item of this.SelectedItemDataSource){
+  for(let item of this.selectedOrderItem){
   var intItem = +item.ItemQuantity;
   this.totalQuantity += intItem;
   this.totalPrice += item.ItemPrice * item.ItemQuantity;
@@ -152,9 +151,9 @@ increase_quantity(item : Item){
 
   Assign():void{
     this.orderdb.Orderitems = this.selectedOrderItem;
+    this.CountPrice();
       this.orderdb.TotalPrice = this.totalPrice;
       this.orderdb.TotalQuantity = this.totalQuantity;
-
   }
 
 
